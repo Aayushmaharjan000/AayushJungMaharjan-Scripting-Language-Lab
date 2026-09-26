@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>AJAX Login</title>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+
+<div id="loginBox">
+    <form id="loginForm">
+        Username: <input type="text" name="username" id="username"><br><br>
+        Password: <input type="password" name="password" id="password"><br><br>
+        <button type="submit">Login</button>
+    </form>
+</div>
+
+<div id="message"></div>
+
+<script>
+$(document).ready(function () {
+    $("#loginForm").submit(function (e) {
+        e.preventDefault();
+
+        $.ajax({
+            type: "POST",
+            url: "q10_login_backend.php",
+            data: {
+                username: $("#username").val(),
+                password: $("#password").val()
+            },
+            success: function (response) {
+                if (response.trim() === "success") {
+                    $("#loginBox").hide();
+                    $("#message").html("<h3>Welcome, " + $("#username").val() + "!</h3>");
+                } else {
+                    $("#message").html("<p style='color:red;'>Invalid credentials, please try again.</p>");
+                }
+            }
+        });
+    });
+});
+</script>
+</body>
+</html>

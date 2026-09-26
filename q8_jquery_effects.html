@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>jQuery Effects</title>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+
+<div id="box" style="width:150px;height:150px;background:skyblue;">Box</div>
+<br>
+
+<button id="btnHide">Hide</button>
+<button id="btnShow">Show</button>
+<button id="btnToggle">Toggle</button>
+<button id="btnFadeIn">Fade In</button>
+<button id="btnFadeOut">Fade Out</button>
+<button id="btnFadeToggle">Fade Toggle</button>
+<button id="btnSlideUp">Slide Up</button>
+<button id="btnSlideDown">Slide Down</button>
+<button id="btnSlideToggle">Slide Toggle</button>
+<button id="btnAnimate">Animate</button>
+
+<script>
+$(document).ready(function () {
+    $("#btnHide").click(function () { $("#box").hide(); });
+    $("#btnShow").click(function () { $("#box").show(); });
+    $("#btnToggle").click(function () { $("#box").toggle(); });
+    $("#btnFadeIn").click(function () { $("#box").fadeIn(); });
+    $("#btnFadeOut").click(function () { $("#box").fadeOut(); });
+    $("#btnFadeToggle").click(function () { $("#box").fadeToggle(); });
+    $("#btnSlideUp").click(function () { $("#box").slideUp(); });
+    $("#btnSlideDown").click(function () { $("#box").slideDown(); });
+    $("#btnSlideToggle").click(function () { $("#box").slideToggle(); });
+    $("#btnAnimate").click(function () {
+        $("#box").animate({ width: "300px", height: "200px" });
+    });
+});
+</script>
+</body>
+</html>

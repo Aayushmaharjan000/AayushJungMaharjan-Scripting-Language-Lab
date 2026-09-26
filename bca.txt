@@ -1,0 +1,5 @@
+BCA  is an undergraduate degree program
+that focuses on computer applications, programming languages, database
+management, web technologies, and software development. It prepares
+students for careers in software development, system administration,
+and IT management.

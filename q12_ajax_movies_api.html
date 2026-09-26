@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>AJAX - Movies API</title>
+<style>
+.movie-card { border: 1px solid #ccc; padding: 10px; margin: 10px 0; }
+</style>
+</head>
+<body>
+
+<h3>Movie List</h3>
+<div id="movies"></div>
+
+<script>
+fetch("https://freetestapi.com/api/v1/movies")
+    .then(function (response) {
+        return response.json();
+    })
+    .then(function (data) {
+        var html = "";
+        data.forEach(function (movie) {
+            html += "<div class='movie-card'>";
+            html += "<h4>" + movie.title + "</h4>";
+            html += "<p>Year: " + movie.year + "</p>";
+            html += "<p>Genre: " + movie.genre + "</p>";
+            html += "<p>Rating: " + movie.rating + "</p>";
+            html += "</div>";
+        });
+        document.getElementById("movies").innerHTML = html;
+    })
+    .catch(function (error) {
+        document.getElementById("movies").innerHTML = "Error loading movies.";
+    });
+</script>
+</body>
+</html>

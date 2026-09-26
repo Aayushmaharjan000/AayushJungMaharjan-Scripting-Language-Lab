@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Registration Form Validation</title>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+
+<form id="regForm">
+    Name: <input type="text" name="name" id="name"><br><br>
+    Address: <input type="text" name="address" id="address"><br><br>
+    Username: <input type="text" name="username" id="username"><br><br>
+    Email: <input type="text" name="email" id="email"><br><br>
+    Password: <input type="password" name="password" id="password"><br><br>
+    Website: <input type="text" name="website" id="website"><br><br>
+    Phone: <input type="text" name="phone" id="phone"><br><br>
+    Gender:
+    Male <input type="radio" name="gender" value="male">
+    Female <input type="radio" name="gender" value="female"><br><br>
+    Course:
+    <select id="course" name="course">
+        <option value="">--Select--</option>
+        <option value="BCA">BCA</option>
+        <option value="BIT">BIT</option>
+    </select><br><br>
+    <button type="submit">Register</button>
+</form>
+
+<div id="errors" style="color:red;"></div>
+
+<script>
+$(document).ready(function () {
+    $("#regForm").submit(function (e) {
+        e.preventDefault();
+        let errors = [];
+
+        let name = $("#name").val().trim();
+        if (name === "" || /\d/.test(name)) {
+            errors.push("Name must not be empty and must not contain numbers.");
+        }
+
+        let username = $("#username").val().trim();
+        if (username === "" || /[^a-zA-Z0-9_]/.test(username)) {
+            errors.push("Username must not be empty, no spaces or special characters (except _).");
+        }
+
+        let phone = $("#phone").val().trim();
+        if (phone === "" || !/^\d+$/.test(phone) || !/^(98|97|96)/.test(phone)) {
+            errors.push("Phone must contain only numbers and start with 98, 97 or 96.");
+        }
+
+        if (!$("input[name='gender']:checked").length) {
+            errors.push("Please select a gender.");
+        }
+
+        if ($("#address").val().trim() === "") {
+            errors.push("Address must not be empty.");
+        }
+
+        let email = $("#email").val().trim();
+        if (email === "" || email.indexOf("@") === -1) {
+            errors.push("Email must not be empty and must contain @.");
+        }
+
+        let password = $("#password").val();
+        let passRule = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
+        if (password === "" || !passRule.test(password)) {
+            errors.push("Password must be at least 8 characters with upper, lower, digit and special character.");
+        }
+
+        if ($("#course").val() === "") {
+            errors.push("Please select a course.");
+        }
+
+        if (errors.length > 0) {
+            $("#errors").html(errors.join("<br>"));
+        } else {
+            $("#errors").html("<span style='color:green;'>Form is valid!</span>");
+        }
+    });
+});
+</script>
+</body>
+</html>

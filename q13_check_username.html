@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Check Username Availability</title>
+</head>
+<body>
+
+<label>Enter username for password reset:</label>
+<input type="text" id="username" onkeyup="checkUsername()">
+<div id="result"></div>
+
+<script>
+function checkUsername() {
+    var username = document.getElementById("username").value;
+
+    if (username.length == 0) {
+        document.getElementById("result").innerHTML = "";
+        return;
+    }
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("result").innerHTML = this.responseText;
+        }
+    };
+    xhttp.open("GET", "q13_check_username_backend.php?username=" + username, true);
+    xhttp.send();
+}
+</script>
+</body>
+</html>
