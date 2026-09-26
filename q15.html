@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html><head><title>Q15 - Display Colors with Ordinal</title></head>
+<body>
+<h2>Q15: Display colors with ordinal position</h2>
+<pre id="out"></pre>
+<script>
+function displayColors(colorArr) {
+  const suffixes = ["th", "st", "nd", "rd"];
+  let lines = [];
+  colorArr.forEach((color, index) => {
+    const n = index + 1;
+    let suffix;
+    if (n % 100 >= 11 && n % 100 <= 13) {
+      suffix = "th";
+    } else {
+      suffix = suffixes[n % 10] || "th";
+    }
+    lines.push(`${n}${suffix} choice is ${color}.`);
+  });
+  return lines;
+}
+
+let color = ["Blue", "Green", "Red", "Orange", "Violet", "Indigo", "Yellow"];
+let output = displayColors(color);
+output.forEach(line => console.log(line));
+
+document.getElementById('out').textContent = output.join('\n');
+</script>
+</body></html>

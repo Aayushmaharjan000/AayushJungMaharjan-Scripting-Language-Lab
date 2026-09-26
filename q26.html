@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html><head><title>Q26 - Ten Most Frequent Words</title></head>
+<body>
+<h2>Q26: Ten most frequent words from user input</h2>
+<textarea id="inputText" rows="5" cols="50" placeholder="Type or paste text here..."></textarea><br>
+<button onclick="run()">Find Top 10 Words</button>
+<pre id="out"></pre>
+<script>
+function tenMostFrequentWords(text) {
+  const words = text
+    .toLowerCase()
+    .replace(/[^a-z0-9\s]/g, '')
+    .split(/\s+/)
+    .filter(Boolean);
+
+  const freq = {};
+  words.forEach(word => {
+    freq[word] = (freq[word] || 0) + 1;
+  });
+
+  return Object.entries(freq)
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 10);
+}
+
+function run() {
+  const text = document.getElementById('inputText').value;
+  const result = tenMostFrequentWords(text);
+  console.log(result);
+  document.getElementById('out').textContent =
+    result.map(([word, count]) => `${word}: ${count}`).join('\n');
+}
+</script>
+</body></html>

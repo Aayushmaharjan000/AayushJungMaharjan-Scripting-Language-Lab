@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html><head><title>Q22 - Check Blank String</title></head>
+<body>
+<h2>Q22: Check whether a string is blank or not</h2>
+<pre id="out"></pre>
+<script>
+function isBlank(str) {
+  return str.trim().length === 0;
+}
+
+console.log(isBlank(''));        // true
+console.log(isBlank('   '));     // true
+console.log(isBlank('hello'));   // false
+
+document.getElementById('out').textContent =
+  `isBlank('') = ${isBlank('')}\n` +
+  `isBlank('   ') = ${isBlank('   ')}\n` +
+  `isBlank('hello') = ${isBlank('hello')}`;
+</script>
+</body></html>

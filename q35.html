@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Q35 - Digital Clock</title>
+<style>
+  body { display: flex; justify-content: center; align-items: center; height: 100vh;
+         margin: 0; background: linear-gradient(135deg, #7b1fa2, #d500f9); }
+  .digital-clock { text-align: center; }
+  .title { color: white; font-family: Arial, sans-serif; letter-spacing: 3px; margin-bottom: 15px; }
+  .time { display: flex; gap: 10px; justify-content: center; }
+  .segment { background: white; color: #333; font-family: 'Courier New', monospace;
+             font-size: 40px; padding: 10px 15px; border-radius: 6px; }
+</style>
+</head>
+<body>
+  <div class="digital-clock">
+    <div class="title">DIGITAL CLOCK</div>
+    <div class="time">
+      <div class="segment" id="hh">00</div>
+      <div class="segment" id="mm">00</div>
+      <div class="segment" id="ss">00</div>
+    </div>
+  </div>
+
+<script>
+function updateDigitalClock() {
+  const now = new Date();
+  document.getElementById('hh').textContent = String(now.getHours()).padStart(2, '0');
+  document.getElementById('mm').textContent = String(now.getMinutes()).padStart(2, '0');
+  document.getElementById('ss').textContent = String(now.getSeconds()).padStart(2, '0');
+}
+setInterval(updateDigitalClock, 1000);
+updateDigitalClock();
+</script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Q34 - Analog Clock</title>
+<style>
+  body { display: flex; justify-content: center; align-items: center; height: 100vh;
+         margin: 0; background: #29b6f6; }
+  .clock { width: 220px; height: 220px; border: 8px solid #333; border-radius: 50%;
+           position: relative; background: white; }
+  .clock::before { content: ''; position: absolute; top: 50%; left: 50%; width: 12px;
+                    height: 12px; background: #333; border-radius: 50%;
+                    transform: translate(-50%, -50%); z-index: 10; }
+  .hand { position: absolute; bottom: 50%; left: 50%; transform-origin: bottom; background: #333; }
+  .hour { width: 6px; height: 55px; margin-left: -3px; }
+  .minute { width: 4px; height: 75px; margin-left: -2px; }
+  .second { width: 2px; height: 85px; margin-left: -1px; background: red; }
+  .number { position: absolute; width: 100%; height: 100%; text-align: center; font-family: Arial; }
+</style>
+</head>
+<body>
+  <div class="clock" id="clock">
+    <div class="hand hour" id="hourHand"></div>
+    <div class="hand minute" id="minuteHand"></div>
+    <div class="hand second" id="secondHand"></div>
+  </div>
+
+<script>
+const clock = document.getElementById('clock');
+
+// place hour numbers 1-12
+for (let i = 1; i <= 12; i++) {
+  const angle = (i * 30) * (Math.PI / 180);
+  const x = 110 + 90 * Math.sin(angle) - 8;
+  const y = 110 - 90 * Math.cos(angle) - 8;
+  const num = document.createElement('div');
+  num.textContent = i;
+  num.style.position = 'absolute';
+  num.style.left = x + 'px';
+  num.style.top = y + 'px';
+  clock.appendChild(num);
+}
+
+function updateClock() {
+  const now = new Date();
+  const hours = now.getHours() % 12;
+  const minutes = now.getMinutes();
+  const seconds = now.getSeconds();
+
+  const hourDeg = (hours * 30) + (minutes * 0.5);
+  const minuteDeg = minutes * 6;
+  const secondDeg = seconds * 6;
+
+  document.getElementById('hourHand').style.transform = `rotate(${hourDeg}deg)`;
+  document.getElementById('minuteHand').style.transform = `rotate(${minuteDeg}deg)`;
+  document.getElementById('secondHand').style.transform = `rotate(${secondDeg}deg)`;
+}
+
+setInterval(updateClock, 1000);
+updateClock();
+</script>
+</body>
+</html>

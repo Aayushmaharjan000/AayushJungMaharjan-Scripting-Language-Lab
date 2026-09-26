@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html><head><title>Q3 - Count Vowels</title></head>
+<body>
+<h2>Q3: Count vowels in a string</h2>
+<pre id="out"></pre>
+<script>
+// Function that counts vowels in a string
+function countVowels(str) {
+  const matches = str.match(/[aeiouAEIOU]/g);
+  return matches ? matches.length : 0;
+}
+
+let result = countVowels('The quick brown fox');
+console.log(result); // 5
+
+document.getElementById('out').textContent =
+  "countVowels('The quick brown fox') = " + result;
+</script>
+</body></html>

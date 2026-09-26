@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html><head><title>Q16 - Odd/Even Loop</title></head>
+<body>
+<h2>Q16: Loop from 0 to 15, check odd/even</h2>
+<pre id="out"></pre>
+<script>
+let lines = [];
+for (let i = 0; i <= 15; i++) {
+  const msg = `${i} is ${i % 2 === 0 ? 'even' : 'odd'}`;
+  console.log(msg);
+  lines.push(msg);
+}
+document.getElementById('out').textContent = lines.join('\n');
+</script>
+</body></html>

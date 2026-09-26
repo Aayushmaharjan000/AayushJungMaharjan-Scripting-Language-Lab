@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html><head><title>Q9 - Larger and Smaller of Three Integers</title></head>
+<body>
+<h2>Q9: Display larger and smaller of three integers</h2>
+<pre id="out"></pre>
+<script>
+function compareThree(a, b, c) {
+  return { larger: Math.max(a, b, c), smaller: Math.min(a, b, c) };
+}
+
+let result = compareThree(23, 89, 11);
+console.log(result);
+
+document.getElementById('out').textContent =
+  `Larger: ${result.larger}, Smaller: ${result.smaller}`;
+</script>
+</body></html>

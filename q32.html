@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Q32 - Counter App</title>
+<style>
+  body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+  .counter-box { display: inline-block; }
+  button { padding: 10px 20px; margin: 5px; font-size: 18px; border: none;
+           border-radius: 4px; cursor: pointer; color: white; background: #2e7d32; }
+  #resetBtn { background: #1976d2; display: block; margin: 10px auto; }
+  #count { font-size: 24px; padding: 10px 20px; background: #ffcdd2; border-radius: 4px; }
+</style>
+</head>
+<body>
+  <h2>Counter App</h2>
+  <div class="counter-box">
+    <button onclick="increment()">+</button>
+    <span id="count">0</span>
+    <button onclick="decrement()">-</button>
+  </div>
+  <button id="resetBtn" onclick="reset()">Reset</button>
+
+<script>
+let count = 0;
+const countDisplay = document.getElementById('count');
+
+function increment() {
+  count++;
+  countDisplay.textContent = count;
+}
+function decrement() {
+  count--;
+  countDisplay.textContent = count;
+}
+function reset() {
+  count = 0;
+  countDisplay.textContent = count;
+}
+</script>
+</body>
+</html>

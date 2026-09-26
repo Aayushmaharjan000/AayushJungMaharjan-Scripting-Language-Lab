@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Q38 - Button Events on Paragraph</title>
+<style>
+  body { font-family: Arial, sans-serif; text-align: center; }
+  button { padding: 10px; margin: 4px; color: white; border: none; border-radius: 4px; cursor: pointer; }
+  #paragraph { font-size: 16px; margin-top: 20px; }
+</style>
+</head>
+<body>
+  <h2>Q38: Button-controlled paragraph</h2>
+
+  <button style="background:#1976d2" onclick="changeBackground()">Change Background</button>
+  <button style="background:#7b1fa2" onclick="changeParagraphBackground()">Change Paragraph Background</button>
+  <button style="background:#fbc02d" onclick="hideParagraph()">Hide Paragraph</button>
+  <button style="background:#43a047" onclick="showParagraph()">Show Paragraph</button>
+  <button style="background:#6a1b9a" onclick="increaseFont()">Increase font Size by 2pt</button>
+  <button style="background:#e53935" onclick="decreaseFont()">Decrease font Size by 2pt</button>
+  <button style="background:#d32f2f" onclick="resetFont()">Reset font into 12pt</button>
+  <button style="background:#283593" onclick="changeTextColor()">Change Text Color</button>
+
+  <p id="paragraph" style="font-size:12pt;">This paragraph responds to the buttons above.</p>
+
+<script>
+const p = document.getElementById('paragraph');
+const bgColors = ['#fce4ec', '#e3f2fd', '#e8f5e9', '#fff3e0'];
+const textColors = ['red', 'blue', 'green', 'purple', 'darkorange'];
+
+function changeBackground() {
+  document.body.style.background = bgColors[Math.floor(Math.random() * bgColors.length)];
+}
+function changeParagraphBackground() {
+  p.style.background = bgColors[Math.floor(Math.random() * bgColors.length)];
+}
+function hideParagraph() {
+  p.style.display = 'none';
+}
+function showParagraph() {
+  p.style.display = 'block';
+}
+function increaseFont() {
+  const current = parseFloat(p.style.fontSize) || 12;
+  p.style.fontSize = (current + 2) + 'pt';
+}
+function decreaseFont() {
+  const current = parseFloat(p.style.fontSize) || 12;
+  p.style.fontSize = (current - 2) + 'pt';
+}
+function resetFont() {
+  p.style.fontSize = '12pt';
+}
+function changeTextColor() {
+  p.style.color = textColors[Math.floor(Math.random() * textColors.length)];
+}
+</script>
+</body>
+</html>

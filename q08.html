@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html><head><title>Q8 - Larger and Smaller of Two Integers</title></head>
+<body>
+<h2>Q8: Display larger and smaller of two integers</h2>
+<pre id="out"></pre>
+<script>
+// Function that accepts two integers and returns larger and smaller
+function compareTwo(a, b) {
+  return { larger: Math.max(a, b), smaller: Math.min(a, b) };
+}
+
+let result = compareTwo(45, 78);
+console.log(result);
+
+document.getElementById('out').textContent =
+  `Larger: ${result.larger}, Smaller: ${result.smaller}`;
+</script>
+</body></html>

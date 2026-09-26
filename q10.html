@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html><head><title>Q10 - Largest in Array of n Integers</title></head>
+<body>
+<h2>Q10: n integers into an array, display the largest</h2>
+<pre id="out"></pre>
+<script>
+function findLargest(arr) {
+  return Math.max(...arr);
+}
+
+let arr = [12, 45, 3, 89, 22, 67];
+let result = findLargest(arr);
+console.log(result); // 89
+
+document.getElementById('out').textContent =
+  `Array: [${arr}]\nLargest: ${result}`;
+</script>
+</body></html>

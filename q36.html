@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Q36 - Cookie CRUD</title>
+<style>
+  body { font-family: Arial, sans-serif; max-width: 500px; margin: 30px auto; }
+  input, button { padding: 8px; margin: 4px 0; }
+  table { border-collapse: collapse; width: 100%; margin-top: 15px; }
+  td, th { border: 1px solid #999; padding: 6px 10px; text-align: left; }
+</style>
+</head>
+<body>
+  <h2>Q36: Cookie Manager</h2>
+
+  <label>Key: <input type="text" id="cookieKey"></label><br>
+  <label>Value: <input type="text" id="cookieValue"></label><br>
+  <button onclick="setCookie()">a. Save Cookie</button>
+  <button onclick="readCookie()">b. Read Cookie</button>
+  <button onclick="displayCookies()">c. Display All</button>
+  <button onclick="deleteCookie()">d. Delete Cookie</button>
+  <button onclick="deleteAllCookies()">e. Delete All</button>
+
+  <p id="readResult"></p>
+  <table id="cookieTable"></table>
+
+<script>
+// a. Accept key/value from user, store into cookie
+function setCookie() {
+  const key = document.getElementById('cookieKey').value;
+  const value = document.getElementById('cookieValue').value;
+  if (!key) return;
+  document.cookie = `${encodeURIComponent(key)}=${encodeURIComponent(value)}; path=/; max-age=86400`;
+  displayCookies();
+}
+
+// b. Read cookie according to key entered
+function readCookie() {
+  const key = document.getElementById('cookieKey').value;
+  const cookies = document.cookie.split('; ');
+  let found = 'Not found';
+  for (const c of cookies) {
+    const [k, v] = c.split('=');
+    if (decodeURIComponent(k) === key) {
+      found = decodeURIComponent(v);
+      break;
+    }
+  }
+  document.getElementById('readResult').textContent = `Value for "${key}": ${found}`;
+}
+
+// c. Display all cookies in a table with key : value
+function displayCookies() {
+  const table = document.getElementById('cookieTable');
+  table.innerHTML = '<tr><th>Key</th><th>Value</th></tr>';
+  if (!document.cookie) return;
+  document.cookie.split('; ').forEach(c => {
+    const [k, v] = c.split('=');
+    if (!k) return;
+    const row = table.insertRow();
+    row.insertCell(0).textContent = decodeURIComponent(k);
+    row.insertCell(1).textContent = decodeURIComponent(v);
+  });
+}
+
+// d. Delete cookie according to key entered
+function deleteCookie() {
+  const key = document.getElementById('cookieKey').value;
+  document.cookie = `${encodeURIComponent(key)}=; path=/; max-age=0`;
+  displayCookies();
+}
+
+// e. Delete all cookies
+function deleteAllCookies() {
+  document.cookie.split('; ').forEach(c => {
+    const key = c.split('=')[0];
+    document.cookie = `${key}=; path=/; max-age=0`;
+  });
+  displayCookies();
+}
+
+displayCookies();
+</script>
+</body>
+</html>

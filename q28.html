@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Q28 - Challenges App</title>
+<style>
+  body { font-family: Arial, sans-serif; }
+  .wrapper { max-width: 500px; }
+  ul { list-style: none; padding: 0; }
+  li { padding: 10px; margin: 5px 0; border-radius: 4px; }
+</style>
+</head>
+<body>
+  <div class="wrapper">
+    <h1 id="yearHeading">Asabeneh Yetayeh challenges in 2020</h1>
+    <h2 id="dateTime">30DaysOfJavaScript Challenge</h2>
+    <ul>
+      <li id="ch1">Python Challenge Done</li>
+      <li id="ch2">JavaScript Challenge Ongoing</li>
+      <li id="ch3">React Challenge Coming</li>
+      <li id="ch4">FullStack Challenge Coming</li>
+      <li id="ch5">DataAnalysis Challenge Coming</li>
+      <li id="ch6">ReactNative Challenge Coming</li>
+      <li id="ch7">MachineLearning Challenge Coming</li>
+    </ul>
+  </div>
+
+<script>
+// a. The h1 (year) text color changes every 1 second
+const colors = ['red', 'blue', 'green', 'purple', 'orange', 'teal'];
+setInterval(() => {
+  const randomColor = colors[Math.floor(Math.random() * colors.length)];
+  document.getElementById('yearHeading').style.color = randomColor;
+}, 1000);
+
+// b. The date/time (h2) background color changes every 1 second, showing live time
+setInterval(() => {
+  const now = new Date();
+  document.getElementById('dateTime').textContent = now.toLocaleTimeString();
+  const randomColor = colors[Math.floor(Math.random() * colors.length)];
+  document.getElementById('dateTime').style.background = randomColor;
+  document.getElementById('dateTime').style.color = 'white';
+}, 1000);
+
+// c, d, e. Style each <li> based on its status text
+document.querySelectorAll('li').forEach(li => {
+  const text = li.textContent;
+  if (text.includes('Done')) {
+    li.style.background = 'green';
+    li.style.color = 'white';
+  } else if (text.includes('Ongoing')) {
+    li.style.background = 'yellow';
+  } else if (text.includes('Coming')) {
+    li.style.background = 'red';
+    li.style.color = 'white';
+  }
+});
+</script>
+</body>
+</html>

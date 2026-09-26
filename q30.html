@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Q30 - Countries Table</title>
+<style>
+  table { border-collapse: collapse; }
+  td { border: 1px solid #333; padding: 8px 12px; font-family: Arial; }
+</style>
+</head>
+<body>
+  <h2>Q30: 50 Countries in a Table (6 per row)</h2>
+  <table id="countryTable"></table>
+
+<script>
+const countries = [
+  "Afghanistan","Albania","Algeria","Andorra","Angola","Argentina","Armenia",
+  "Australia","Austria","Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados",
+  "Belarus","Belgium","Belize","Benin","Bhutan","Bolivia","Bosnia","Botswana",
+  "Brazil","Brunei","Bulgaria","Burkina Faso","Burundi","Cambodia","Cameroon",
+  "Canada","Chad","Chile","China","Colombia","Comoros","Congo","Costa Rica",
+  "Croatia","Cuba","Cyprus","Czechia","Denmark","Djibouti","Dominica","Ecuador",
+  "Egypt","El Salvador","Estonia","Ethiopia","Fiji"
+];
+
+const table = document.getElementById('countryTable');
+const perRow = 6;
+
+for (let i = 0; i < countries.length; i += perRow) {
+  const row = document.createElement('tr');
+  const rowCountries = countries.slice(i, i + perRow);
+  rowCountries.forEach(country => {
+    const cell = document.createElement('td');
+    cell.textContent = country;
+    row.appendChild(cell);
+  });
+  table.appendChild(row);
+}
+</script>
+</body>
+</html>

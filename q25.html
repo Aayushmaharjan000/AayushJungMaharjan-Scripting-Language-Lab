@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html><head><title>Q25 - personAccount Object</title></head>
+<body>
+<h2>Q25: personAccount object literal</h2>
+<pre id="out"></pre>
+<script>
+const personAccount = {
+  firstName: "John",
+  lastName: "Doe",
+  incomes: [
+    { amount: 5000, description: "Salary" },
+    { amount: 500, description: "Freelance" }
+  ],
+  expenses: [
+    { amount: 1200, description: "Rent" },
+    { amount: 300, description: "Groceries" }
+  ],
+  totalIncome() {
+    return this.incomes.reduce((sum, i) => sum + i.amount, 0);
+  },
+  totalExpense() {
+    return this.expenses.reduce((sum, e) => sum + e.amount, 0);
+  },
+  accountBalance() {
+    return this.totalIncome() - this.totalExpense();
+  },
+  addIncome(amount, description) {
+    this.incomes.push({ amount, description });
+  },
+  addExpense(amount, description) {
+    this.expenses.push({ amount, description });
+  },
+  accountInfo() {
+    return `${this.firstName} ${this.lastName}: Income $${this.totalIncome()}, ` +
+           `Expense $${this.totalExpense()}, Balance $${this.accountBalance()}`;
+  }
+};
+
+personAccount.addIncome(200, "Bonus");
+personAccount.addExpense(50, "Transport");
+
+console.log(personAccount.accountInfo());
+document.getElementById('out').textContent = personAccount.accountInfo();
+</script>
+</body></html>

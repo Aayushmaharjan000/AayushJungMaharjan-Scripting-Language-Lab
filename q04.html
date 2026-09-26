@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html><head><title>Q4 - Capitalize First Letters</title></head>
+<body>
+<h2>Q4: Capitalize first letter of each word</h2>
+<pre id="out"></pre>
+<script>
+// Function that capitalizes the first letter of every word
+function capitalizeWords(str) {
+  return str.replace(/\b\w/g, function (char) {
+    return char.toUpperCase();
+  });
+}
+
+let result = capitalizeWords('the quick brown fox');
+console.log(result); // "The Quick Brown Fox"
+
+document.getElementById('out').textContent =
+  "capitalizeWords('the quick brown fox') = '" + result + "'";
+</script>
+</body></html>

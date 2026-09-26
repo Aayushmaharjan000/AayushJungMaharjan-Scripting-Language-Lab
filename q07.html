@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html><head><title>Q7 - Basic Calculator</title></head>
+<body>
+<h2>Q7: Add, Subtract, Multiply, Divide (user input)</h2>
+<label>Number 1: <input type="number" id="num1"></label><br><br>
+<label>Number 2: <input type="number" id="num2"></label><br><br>
+<button onclick="calculate()">Calculate</button>
+<pre id="out"></pre>
+<script>
+// Function that performs +, -, *, / on two numbers
+function calculateAll(a, b) {
+  return {
+    sum: a + b,
+    difference: a - b,
+    product: a * b,
+    quotient: b !== 0 ? a / b : 'Cannot divide by zero'
+  };
+}
+
+function calculate() {
+  const a = parseFloat(document.getElementById('num1').value);
+  const b = parseFloat(document.getElementById('num2').value);
+  const result = calculateAll(a, b);
+  console.log(result);
+  document.getElementById('out').textContent =
+    `Sum: ${result.sum}\nDifference: ${result.difference}\n` +
+    `Product: ${result.product}\nQuotient: ${result.quotient}`;
+}
+</script>
+</body></html>

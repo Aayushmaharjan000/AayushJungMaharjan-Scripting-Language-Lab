@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Q37 - Clone/Remove Table Rows</title>
+<style>
+  body { font-family: Arial, sans-serif; max-width: 600px; margin: 30px auto; }
+  table { border-collapse: collapse; width: 100%; }
+  td, th { border: 1px solid #999; padding: 8px; }
+  .trash { background: #e53935; color: white; border: none; padding: 5px 10px;
+           border-radius: 4px; cursor: pointer; }
+  #addBtn { background: #1e88e5; color: white; border: none; padding: 8px 16px;
+            border-radius: 4px; margin-top: 10px; cursor: pointer; }
+</style>
+</head>
+<body>
+  <h2>Q37: Clone / Remove Table Rows</h2>
+  <table id="rowTable">
+    <tr><th>No</th><th>Product</th><th>Price</th><th>Action</th></tr>
+    <tr>
+      <td>1</td>
+      <td><input type="text" placeholder="Product"></td>
+      <td><input type="number" placeholder="Price"></td>
+      <td><button class="trash" onclick="removeRow(this)">Delete</button></td>
+    </tr>
+  </table>
+  <button id="addBtn" onclick="addRow()">Add New</button>
+
+<script>
+// a. Clone the last row and append as a new last row
+function addRow() {
+  const table = document.getElementById('rowTable');
+  const lastRow = table.rows[table.rows.length - 1];
+  const newRow = lastRow.cloneNode(true);
+
+  // reset the cloned row's inputs
+  newRow.querySelectorAll('input').forEach(input => (input.value = ''));
+  newRow.cells[0].textContent = table.rows.length; // update row number
+
+  table.appendChild(newRow);
+}
+
+// b. Remove the row containing the clicked trash button
+function removeRow(button) {
+  const row = button.closest('tr');
+  row.remove();
+}
+</script>
+</body>
+</html>

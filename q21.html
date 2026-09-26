@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html><head><title>Q21 - Get Weekend Date</title></head>
+<body>
+<h2>Q21: Get the weekend date (Saturday) of the current week</h2>
+<pre id="out"></pre>
+<script>
+function getWeekendDate() {
+  const today = new Date();
+  const day = today.getDay(); // 0=Sun ... 6=Sat
+  const diff = 6 - day;
+  const saturday = new Date(today);
+  saturday.setDate(today.getDate() + diff);
+  return saturday.toDateString();
+}
+
+let result = getWeekendDate();
+console.log(result);
+
+document.getElementById('out').textContent = "This week's Saturday: " + result;
+</script>
+</body></html>

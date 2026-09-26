@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html><head><title>Q14 - Sort Array Items</title></head>
+<body>
+<h2>Q14: Sort the items of an array</h2>
+<pre id="out"></pre>
+<script>
+var arr1 = [3, 8, 7, 6, 5, -4, 3, 2, 1];
+let sorted = [...arr1].sort((a, b) => a - b);
+console.log(sorted.join(',')); // -4,1,2,3,3,5,6,7,8
+
+document.getElementById('out').textContent =
+  `Original: [${arr1}]\nSorted: ${sorted.join(',')}`;
+</script>
+</body></html>

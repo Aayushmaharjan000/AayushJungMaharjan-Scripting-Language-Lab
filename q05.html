@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html><head><title>Q5 - Current Date</title></head>
+<body>
+<h2>Q5: Get the current date in multiple formats</h2>
+<pre id="out"></pre>
+<script>
+// Function that returns the current date in several formats
+function getCurrentDate() {
+  const d = new Date();
+  const mm = String(d.getMonth() + 1).padStart(2, '0');
+  const dd = String(d.getDate()).padStart(2, '0');
+  const yyyy = d.getFullYear();
+
+  const months = ["January","February","March","April","May","June","July",
+                   "August","September","October","November","December"];
+  const days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+
+  return {
+    "mm-dd-yyyy": `${mm}-${dd}-${yyyy}`,
+    "mm/dd/yyyy": `${mm}/${dd}/${yyyy}`,
+    "dd-mm-yyyy": `${dd}-${mm}-${yyyy}`,
+    "dd/mm/yyyy": `${dd}/${mm}/${yyyy}`,
+    "yyyy month date day": `${yyyy} ${months[d.getMonth()]} ${dd} ${days[d.getDay()]}`
+  };
+}
+
+let result = getCurrentDate();
+console.log(result);
+
+let text = '';
+for (const key in result) {
+  text += key + " => " + result[key] + "\n";
+}
+document.getElementById('out').textContent = text;
+</script>
+</body></html>

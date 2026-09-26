@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html><head><title>Q2 - Alphabetical Sort String</title></head>
+<body>
+<h2>Q2: Sort letters of a string alphabetically</h2>
+<pre id="out"></pre>
+<script>
+// Function that sorts letters of a string alphabetically
+function alphabeticalSort(str) {
+  return str.split('').sort().join('');
+}
+
+let result = alphabeticalSort('webmaster');
+console.log(result); // "abeemrstw"
+
+document.getElementById('out').textContent =
+  "alphabeticalSort('webmaster') = '" + result + "'";
+</script>
+</body></html>

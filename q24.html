@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html><head><title>Q24 - Dog Object</title></head>
+<body>
+<h2>Q24: Dog object tasks</h2>
+<pre id="out"></pre>
+<script>
+let lines = [];
+
+// a. Create an empty object called dog
+let dog = {};
+
+// b. Print the dog object on the console
+console.log(dog);
+lines.push("b. Empty dog object: " + JSON.stringify(dog));
+
+// c. Add name, legs, color, age, bark properties
+dog.name = "Rex";
+dog.legs = 4;
+dog.color = "Brown";
+dog.age = 3;
+dog.bark = function () {
+  return "woof woof";
+};
+
+// d. Get name, legs, color, age and bark value from dog object
+lines.push("d. name: " + dog.name);
+lines.push("   legs: " + dog.legs);
+lines.push("   color: " + dog.color);
+lines.push("   age: " + dog.age);
+lines.push("   bark(): " + dog.bark());
+
+// e. Set new properties: breed, getDogInfo
+dog.breed = "Labrador";
+dog.getDogInfo = function () {
+  return `${this.name} is a ${this.age}-year-old ${this.color} ${this.breed} with ${this.legs} legs.`;
+};
+lines.push("e. breed: " + dog.breed);
+lines.push("   getDogInfo(): " + dog.getDogInfo());
+
+console.log(dog);
+document.getElementById('out').textContent = lines.join('\n');
+</script>
+</body></html>

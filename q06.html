@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html><head><title>Q6 - Days Until Christmas</title></head>
+<body>
+<h2>Q6: Days left until next Christmas</h2>
+<pre id="out"></pre>
+<script>
+// Function that calculates days left until the next Christmas (Dec 25)
+function daysUntilChristmas() {
+  const today = new Date();
+  let year = today.getFullYear();
+  let christmas = new Date(year, 11, 25);
+
+  if (today.getTime() > christmas.getTime()) {
+    christmas = new Date(year + 1, 11, 25);
+  }
+
+  const oneDay = 24 * 60 * 60 * 1000;
+  return Math.ceil((christmas.setHours(0,0,0,0) - today.setHours(0,0,0,0)) / oneDay);
+}
+
+let result = daysUntilChristmas();
+console.log(result);
+
+document.getElementById('out').textContent =
+  "Days left until next Christmas: " + result;
+</script>
+</body></html>

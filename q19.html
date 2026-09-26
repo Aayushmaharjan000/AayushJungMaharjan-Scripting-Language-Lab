@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html><head><title>Q19 - Calculate Age From Form</title></head>
+<body>
+<h2>Q19: Calculate age using a form</h2>
+<form id="ageForm">
+  <label>Enter your birth date: <input type="date" id="birthdate" required></label>
+  <button type="submit">Calculate Age</button>
+</form>
+<pre id="out"></pre>
+<script>
+function calculateAge(birthDateStr) {
+  const birthDate = new Date(birthDateStr);
+  const today = new Date();
+  let age = today.getFullYear() - birthDate.getFullYear();
+  const m = today.getMonth() - birthDate.getMonth();
+  if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+    age--;
+  }
+  return age;
+}
+
+document.getElementById('ageForm').addEventListener('submit', function (e) {
+  e.preventDefault();
+  const bd = document.getElementById('birthdate').value;
+  const age = calculateAge(bd);
+  console.log(age);
+  document.getElementById('out').textContent = `Your age is: ${age} years`;
+});
+</script>
+</body></html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html><head><title>Q1 - Reverse a Number</title></head>
+<body>
+<h2>Q1: Reverse a Number</h2>
+<pre id="out"></pre>
+<script>
+// Function that reverses a number
+function reverseNumber(num) {
+  const sign = Math.sign(num);
+  const reversed = Math.abs(num).toString().split('').reverse().join('');
+  return parseInt(reversed) * sign;
+}
+
+// Test
+let result1 = reverseNumber(12345);
+let result2 = reverseNumber(-6789);
+console.log(result1); // 54321
+console.log(result2); // -9876
+
+document.getElementById('out').textContent =
+  "reverseNumber(12345) = " + result1 + "\n" +
+  "reverseNumber(-6789) = " + result2;
+</script>
+</body></html>

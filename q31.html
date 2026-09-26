@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Q31 - Even/Odd/Prime Coloring</title>
+<style>
+  #container { display: flex; flex-wrap: wrap; max-width: 700px; margin-top: 10px; }
+  .num { width: 40px; height: 40px; display: flex; align-items: center;
+         justify-content: center; margin: 2px; border-radius: 4px; font-family: Arial; }
+</style>
+</head>
+<body>
+  <h2>Q31: Generate numbers 1 to N, mark even/odd/prime</h2>
+  <label>Enter a number: <input type="number" id="limitInput" value="30"></label>
+  <button onclick="generate()">Generate</button>
+  <div id="container"></div>
+
+<script>
+function isPrime(n) {
+  if (n < 2) return false;
+  for (let i = 2; i <= Math.sqrt(n); i++) {
+    if (n % i === 0) return false;
+  }
+  return true;
+}
+
+function generate() {
+  const limit = parseInt(document.getElementById('limitInput').value);
+  const container = document.getElementById('container');
+  container.innerHTML = '';
+
+  for (let i = 1; i <= limit; i++) {
+    const div = document.createElement('div');
+    div.textContent = i;
+    div.className = 'num';
+
+    if (isPrime(i)) {
+      div.style.background = '#e91e63'; // prime = pink/red
+      div.style.color = 'white';
+    } else if (i % 2 === 0) {
+      div.style.background = '#4caf50'; // even = green
+      div.style.color = 'white';
+    } else {
+      div.style.background = '#ffeb3b'; // odd = yellow
+    }
+    container.appendChild(div);
+  }
+}
+generate();
+</script>
+</body>
+</html>

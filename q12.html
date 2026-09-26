@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html><head><title>Q12 - Check if Input is Array</title></head>
+<body>
+<h2>Q12: Check whether an input is an array</h2>
+<pre id="out"></pre>
+<script>
+// Function to check whether an input is an array or not
+function isArrayCheck(input) {
+  return Array.isArray(input);
+}
+
+console.log(isArrayCheck([1, 2, 3]));   // true
+console.log(isArrayCheck('hello'));     // false
+console.log(isArrayCheck({a: 1}));      // false
+
+document.getElementById('out').textContent =
+  `isArrayCheck([1,2,3]) = ${isArrayCheck([1,2,3])}\n` +
+  `isArrayCheck('hello') = ${isArrayCheck('hello')}\n` +
+  `isArrayCheck({a:1}) = ${isArrayCheck({a:1})}`;
+</script>
+</body></html>

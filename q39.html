@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Q39 - Form Validation</title>
+<style>
+  body { font-family: Arial, sans-serif; max-width: 450px; margin: 30px auto; }
+  label { display: block; margin-top: 12px; font-weight: bold; }
+  input, select { width: 100%; padding: 8px; box-sizing: border-box; margin-top: 4px; }
+  .error { color: red; font-size: 13px; margin-top: 3px; }
+  .radio-group label { display: inline; font-weight: normal; margin-right: 15px; }
+  button { margin-top: 20px; padding: 10px 20px; background: #1976d2; color: white;
+           border: none; border-radius: 4px; cursor: pointer; }
+  #successMsg { color: green; font-weight: bold; margin-top: 15px; }
+</style>
+</head>
+<body>
+  <h2>Q39: Registration Form Validation</h2>
+  <form id="regForm" novalidate>
+    <label>Name</label>
+    <input type="text" id="name">
+    <div class="error" id="nameError"></div>
+
+    <label>Address</label>
+    <input type="text" id="address">
+    <div class="error" id="addressError"></div>
+
+    <label>Username</label>
+    <input type="text" id="username">
+    <div class="error" id="usernameError"></div>
+
+    <label>Email</label>
+    <input type="text" id="email">
+    <div class="error" id="emailError"></div>
+
+    <label>Password</label>
+    <input type="password" id="password">
+    <div class="error" id="passwordError"></div>
+
+    <label>Website</label>
+    <input type="text" id="website">
+
+    <label>Phone</label>
+    <input type="text" id="phone">
+    <div class="error" id="phoneError"></div>
+
+    <label>Gender</label>
+    <div class="radio-group">
+      <label><input type="radio" name="gender" value="Male"> Male</label>
+      <label><input type="radio" name="gender" value="Female"> Female</label>
+      <label><input type="radio" name="gender" value="Other"> Other</label>
+    </div>
+    <div class="error" id="genderError"></div>
+
+    <label>Course</label>
+    <select id="course">
+      <option value="">-- Select Course --</option>
+      <option value="BCA">BCA</option>
+      <option value="BBA">BBA</option>
+      <option value="BIT">BIT</option>
+    </select>
+    <div class="error" id="courseError"></div>
+
+    <button type="submit">Register</button>
+    <div id="successMsg"></div>
+  </form>
+
+<script>
+document.getElementById('regForm').addEventListener('submit', function (e) {
+  e.preventDefault();
+  let valid = true;
+
+  // clear old errors
+  document.querySelectorAll('.error').forEach(el => (el.textContent = ''));
+  document.getElementById('successMsg').textContent = '';
+
+  const name = document.getElementById('name').value.trim();
+  const address = document.getElementById('address').value.trim();
+  const username = document.getElementById('username').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const password = document.getElementById('password').value;
+  const phone = document.getElementById('phone').value.trim();
+  const gender = document.querySelector('input[name="gender"]:checked');
+  const course = document.getElementById('course').value;
+
+  // b. Name validation - not empty, no numbers
+  if (name === '' || /\d/.test(name)) {
+    document.getElementById('nameError').textContent = 'Name is required and must not contain numbers.';
+    valid = false;
+  }
+
+  // f. Address validation - not empty
+  if (address === '') {
+    document.getElementById('addressError').textContent = 'Address is required.';
+    valid = false;
+  }
+
+  // c. Username validation - not empty, no spaces/special chars except underscore
+  if (username === '' || !/^[a-zA-Z0-9_]+$/.test(username)) {
+    document.getElementById('usernameError').textContent =
+      'Username is required and can only contain letters, numbers, and underscore.';
+    valid = false;
+  }
+
+  // g. Email validation - not empty, must include "@"
+  if (email === '' || !email.includes('@')) {
+    document.getElementById('emailError').textContent = 'A valid email with "@" is required.';
+    valid = false;
+  }
+
+  // h. Password validation - min 8 chars, 1 digit, 1 upper, 1 lower, 1 special char
+  const passwordRegex = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}$/;
+  if (!passwordRegex.test(password)) {
+    document.getElementById('passwordError').textContent =
+      'Password must be 8+ chars with upper, lower, digit, and special character.';
+    valid = false;
+  }
+
+  // d. Phone validation - not empty, digits only, starts with 98/97/96
+  if (phone === '' || !/^\d+$/.test(phone) || !/^(98|97|96)/.test(phone)) {
+    document.getElementById('phoneError').textContent =
+      'Phone must contain digits only and start with 98, 97, or 96.';
+    valid = false;
+  }
+
+  // e. Gender validation - not empty
+  if (!gender) {
+    document.getElementById('genderError').textContent = 'Please select a gender.';
+    valid = false;
+  }
+
+  // i. Course validation - must be selected
+  if (course === '') {
+    document.getElementById('courseError').textContent = 'Please select a course.';
+    valid = false;
+  }
+
+  if (valid) {
+    document.getElementById('successMsg').textContent = 'Form submitted successfully!';
+    console.log('Form data:', { name, address, username, email, phone,
+      gender: gender.value, course });
+  }
+});
+</script>
+</body>
+</html>

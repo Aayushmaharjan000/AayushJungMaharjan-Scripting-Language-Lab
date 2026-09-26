@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html><head><title>Q23 - Remove Characters From String</title></head>
+<body>
+<h2>Q23: Remove specified number of characters from a string</h2>
+<pre id="out"></pre>
+<script>
+// Removes n characters from the beginning of the string
+function removeChars(str, n) {
+  return str.length > n ? str.slice(n) : '';
+}
+
+let result = removeChars('JavaScript Program', 4);
+console.log(result); // "Script Program"
+
+document.getElementById('out').textContent =
+  `removeChars('JavaScript Program', 4) = '${result}'`;
+</script>
+</body></html>

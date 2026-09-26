@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html><head><title>Q18 - Difference Between Two Dates (Days)</title></head>
+<body>
+<h2>Q18: Get difference between two dates in days</h2>
+<pre id="out"></pre>
+<script>
+function dateDiffInDays(date1, date2) {
+  const oneDay = 24 * 60 * 60 * 1000;
+  const d1 = new Date(date1);
+  const d2 = new Date(date2);
+  return Math.round(Math.abs((d2 - d1) / oneDay));
+}
+
+let result = dateDiffInDays('2024-01-01', '2024-03-15');
+console.log(result); // 74
+
+document.getElementById('out').textContent =
+  `dateDiffInDays('2024-01-01','2024-03-15') = ${result} days`;
+</script>
+</body></html>

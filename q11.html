@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html><head><title>Q11 - Smallest in Array of n Integers</title></head>
+<body>
+<h2>Q11: n integers into an array, display the smallest</h2>
+<pre id="out"></pre>
+<script>
+function findSmallest(arr) {
+  return Math.min(...arr);
+}
+
+let arr = [12, 45, 3, 89, 22, 67];
+let result = findSmallest(arr);
+console.log(result); // 3
+
+document.getElementById('out').textContent =
+  `Array: [${arr}]\nSmallest: ${result}`;
+</script>
+</body></html>

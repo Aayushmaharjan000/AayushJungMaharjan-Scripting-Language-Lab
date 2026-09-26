@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html><head><title>Q20 - Time Difference in Days</title></head>
+<body>
+<h2>Q20: Get time differences in days between two dates</h2>
+<pre id="out"></pre>
+<script>
+// Same core logic as Q18, provided as a separate named function per spec
+function getTimeDifferenceInDays(date1, date2) {
+  const oneDay = 24 * 60 * 60 * 1000;
+  return Math.round(Math.abs((new Date(date2) - new Date(date1)) / oneDay));
+}
+
+let result = getTimeDifferenceInDays('2024-06-01', '2024-12-25');
+console.log(result);
+
+document.getElementById('out').textContent =
+  `getTimeDifferenceInDays('2024-06-01','2024-12-25') = ${result} days`;
+</script>
+</body></html>
